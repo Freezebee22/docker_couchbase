@@ -1,5 +1,7 @@
-FROM couchbase:community-7.2.0
+FROM drupal
 
-EXPOSE 8091 8092 8093 11210
+RUN apt-get update && apt-get install -y libpq-dev && rm -rf /var/lib/apt/lists/*
 
-CMD ["couchbase-server"]
+COPY . /var/www/html/
+
+EXPOSE 80
